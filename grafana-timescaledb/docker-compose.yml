@@ -1,0 +1,18 @@
+version: '3.9'
+services:
+  timescaledb:
+    image: timescale/timescaledb:latest-pg14
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=default
+    volumes:
+      - timescale-data:/var/lib/postgresql/data
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - 3000:3000
+volumes:
+  timescale-data:
